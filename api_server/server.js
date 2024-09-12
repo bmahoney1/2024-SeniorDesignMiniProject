@@ -38,8 +38,7 @@ app.post('/login', async (req, res) => {
 
     try {
         const user = await firebaseAdmin.auth().getUserByEmail(email);
-        // You can't verify the password directly using Firebase Admin SDK
-        // You'll need to manage user sessions, JWT tokens, etc., for more advanced authentication.
+        
         return res.status(200).json({ message: 'User exists', user });
     } catch (error) {
         return res.status(400).json({ error: 'User not found or invalid credentials' });

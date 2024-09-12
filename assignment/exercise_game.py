@@ -6,6 +6,9 @@ from machine import Pin
 import time
 import random
 import json
+import requests
+
+
 
 
 N: int = 3
@@ -45,7 +48,7 @@ def write_json(json_filename: str, data: dict) -> None:
         json.dump(data, f)
 
 
-def scorer(t: list[int | None]) -> None:
+def scorer(t: list[int | None]) -> dict:
     # %% collate results
     misses = t.count(None)
     print(f"You missed the light {misses} / {len(t)} times")
@@ -54,7 +57,7 @@ def scorer(t: list[int | None]) -> None:
 
     print(t_good)
 
-    if len(t)>0:
+    if len(t_good) > 0:
         min_time = min(t_good)
         max_time = max(t_good)
         avg_time = sum(t_good) / len(t_good)
@@ -63,30 +66,38 @@ def scorer(t: list[int | None]) -> None:
         max_time = None
         avg_time = None
 
-    # add key, value to this dict to store the minimum, maximum, average response time
-    # and score (non-misses / total flashes) i.e. the score a floating point number
-    # is in range [0..1]
-    data = {}
-    if len(t)>0:
-        score = (len(t_good) / len(t))
-    else:
-        score = 0.0
+    data = {
+        "Minimum": min_time,
+        "Maximum": max_time,
+        "Average": avg_time,
+        "Score": len(t_good) / len(t) if len(t) > 0 else 0.0,
+        "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S")
+    }
 
-    data["Minimum"] = min_time
-    data["Maximum"] = max_time
-    data["Average"] = avg_time
-    data["Score"] = score
+    # Send data to API server
+    print(data.timestamp)
+    send_data_to_api(data)
 
-    # %% make dynamic filename and write JSON
+    return data
 
-    now: tuple[int] = time.localtime()
 
-    now_str = "-".join(map(str, now[:3])) + "T" + "_".join(map(str, now[3:6]))
-    filename = f"score-{now_str}.json"
+def send_data_to_api(data: dict) -> None:
+    """Sends the game score data to the API server."""
+    url = "http://127.0.0.1:3000/upload_score"  # API endpoint for the JS server
+    headers = {'Content-Type': 'application/json'}
 
-    print("write", filename)
+    try:
+        response = requests.post(url, headers=headers, data=json.dumps(data))
 
-    write_json(filename, data)
+        if response.status_code == 200:
+            print("Data successfully sent to the API server.")
+        else:
+            print(f"Failed to send data. Status code: {response.status_code}")
+            print(response.json())
+
+    except Exception as e:
+        print(f"Error occurred while sending data: {e}")
+
 
 
 if __name__ == "__main__":

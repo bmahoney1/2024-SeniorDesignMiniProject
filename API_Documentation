@@ -1,0 +1,122 @@
+API Endpoints
+
+1. Sign Up User
+- Endpoint: `/signup`
+- Method: `POST`
+- Description: Creates a new user in the Firebase Authentication system.
+- Request Body: 
+  ```json
+  {
+    "email": "user@example.com",
+    "password": "user_password"
+  }
+  ```
+- Response:
+  - Success (200 OK):
+    ```json
+    {
+      "message": "User created",
+      "userRecord": {
+        "uid": "user_unique_id",
+        "email": "user@example.com"
+      }
+    }
+    ```
+  - Error (500 Internal Server Error):
+    ```json
+    {
+      "error": "Error message describing the issue"
+    }
+    ```
+
+2. Log In User
+- Endpoint: `/login`
+- Method: `POST`
+- Description: Authenticates an existing user and returns user details.
+- Request Body:
+  ```json
+  {
+    "email": "user@example.com",
+    "password": "user_password"
+  }
+  ```
+- Response:
+  - Success (200 OK):
+    ```json
+    {
+      "message": "User exists",
+      "user": {
+        "uid": "user_unique_id",
+        "email": "user@example.com"
+      }
+    }
+    ```
+  - Error (400 Bad Request):
+    ```json
+    {
+      "error": "User not found or invalid credentials"
+    }
+    ```
+
+3. Retrieve User Data
+- Endpoint: `/get_user_data/{uid}`
+- Method: `GET`
+- Description: Retrieves data for a specific user identified by `uid`.
+- URL Parameters:
+  - `uid`: User ID for whom data is to be retrieved.
+- Response:
+  - Success (200 OK):
+    ```json
+    {
+      "Minimum": 100,
+      "Maximum": 500,
+      "Average": 300,
+      "Score": 0.8
+    }
+    ```
+  - Error (404 Not Found):
+    ```json
+    {
+      "error": "No data found for this user"
+    }
+    ```
+  - Error (500 Internal Server Error):
+    ```json
+    {
+      "error": "Failed to retrieve data from Firebase"
+    }
+    ```
+
+4. Upload Score
+- Endpoint: `/upload_score`
+- Method: `POST`
+- Description: Uploads score data to Firebase.
+- Request Body:
+  ```json
+  {
+    "Minimum": 100,
+    "Maximum": 500,
+    "Average": 300,
+    "Score": 0.8,
+    "timestamp": "user_unique_id"
+  }
+  ```
+- Response:
+  - Success (200 OK):
+    ```json
+    {
+      "message": "Data successfully uploaded to Firebase"
+    }
+    ```
+  - Error (400 Bad Request):
+    ```json
+    {
+      "error": "Invalid data or missing fields"
+    }
+    ```
+  - Error (500 Internal Server Error):
+    ```json
+    {
+      "error": "Failed to upload data to Firebase"
+    }
+    ```

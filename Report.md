@@ -14,6 +14,16 @@
 
 # Exercise 3:
 
-    We created a dictionary to keep track of the reaction times of the user. We still need to update this data to cloud for the specific user account.
+    For this exercise, we created a dictionary to create the JSON data for the user after they play the game. 
+    After doing this, we created our FireBase cloud which is what we used for authentication and data storage.
+    We then setup an API server which we used as the "middle-man" between the microcontroller and cloud.
+    This server was an express application and house many endpoints for the micropython file.
+    The way the interactions worked was the micropython file will run, since it is connected to the internet, it will send Rest APIs to the API server and then the server will communicate with the cloud for the desired information.
+    The way the game is played is that the user is able to either log in or sign up. 
+    If they don't have an account they will be able to sign up using a gmail account. 
+    If they do they will have to use their gmail username and their password.
+    After the authentication is done, the user is prompted to either play the game or view their scores. 
+    If they select view, they will be able to only see their data.
+    If they play, they will be creating new data for their account.
 
     

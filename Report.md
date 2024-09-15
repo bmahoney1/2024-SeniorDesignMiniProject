@@ -28,4 +28,12 @@
     If they select view, they will be able to only see their data.
     If they play, they will be creating new data for their account.
 
+
+Testing:
+
+There was a lot of testing that went into setting up the API communication between the microcontroller, the api server and our firebase cloud.
+Some of the testing that was done was using Postman to test if the API server was setup correctly and that it was receving the rest APIs.
+We also had to test how to correctly link the API server to the cloud, and then how to put in the data into the collection of documents.
+Additionally, we had to setup our database in a way that we could retrieve only data for the corresponding user.
+
     

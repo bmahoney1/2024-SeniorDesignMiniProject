@@ -1,9 +1,10 @@
 const express = require('express');
 const firebaseAdmin = require('firebase-admin');
 const bodyParser = require('body-parser');
+require('dotenv').config();
 
 // Initialize Firebase Admin SDK
-const serviceAccount = require('/Users/brennanmahoney/Downloads/miniproject-team-37-firebase-adminsdk-ia785-c9d7378d54.json');  // Ensure this path is correct
+const serviceAccount = require(FireBase);  // Ensure this path is correct
 
 firebaseAdmin.initializeApp({
   credential: firebaseAdmin.credential.cert(serviceAccount)

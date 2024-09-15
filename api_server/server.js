@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 
 // Initialize Firebase Admin SDK
-const serviceAccount = require(FireBase);  // Ensure this path is correct
+const serviceAccount = require(process.env.FireBase);  // Ensure this path is correct
 
 firebaseAdmin.initializeApp({
   credential: firebaseAdmin.credential.cert(serviceAccount)

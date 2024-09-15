@@ -7,7 +7,7 @@ import time
 import machine
 
 # GP28 is ADC2
-ADC2 = 28
+ADC2 = 16
 
 led = machine.Pin("LED", machine.Pin.OUT)
 adc = machine.ADC(ADC2)
@@ -43,3 +43,4 @@ while True:
 
     led.low()
     time.sleep(blink_period * (1 - duty_cycle))
+

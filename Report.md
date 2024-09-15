@@ -36,4 +36,6 @@ Some of the testing that was done was using Postman to test if the API server wa
 We also had to test how to correctly link the API server to the cloud, and then how to put in the data into the collection of documents.
 Additionally, we had to setup our database in a way that we could retrieve only data for the corresponding user.
 
-    
+
+
+Initially, after setting up firestore data base our testing was based on coomunications between the rest API server and pi pico via wifi interface. For this part of the testing json files were a medium of communication between hardware and our local server. For initial testing the json files were saved in the format of year, month, day, weekday, hour, minute, second, microsecond. After we successfully receithese files at our database front end. We tried to apply the unique used ID format to these files. The login (or sing up) process for the same in our code is explained above in the prompt. This is how we conducted rigourous testing between hardware, local server and firebase to achieve accurate results in real time for the user playing the game exercise. 

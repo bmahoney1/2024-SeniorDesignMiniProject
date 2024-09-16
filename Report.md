@@ -5,7 +5,7 @@
     After fixing this, we then found the max and min values of this sensor by putting flashlights to the sensor and by putting the sensor in a completely dark drawer. 
     The values we found from this were Min: 2500 Max: 51000.
     
-    However, for theoritical values that the in-built ADC can yeild us is 2V to 3.3V. These values are based on the ADC's maximum and minimum resolution values i.e 0 to 65536. 
+    However, for theoritical values that the in-built ADC can yeild us is 2V to 3.3V. These values are based on the ADC's maximum and minimum 16-bit resolution values i.e 0 to 65536. 
 
 # Exercise 2:
 

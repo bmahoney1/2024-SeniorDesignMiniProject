@@ -1,7 +1,7 @@
 const express = require('express');
 const firebaseAdmin = require('firebase-admin');
 const bodyParser = require('body-parser');
-require('dotenv').config();
+//require('dotenv').config();
 
 // Initialize Firebase Admin SDK
 const serviceAccount = require(process.env.FireBase);  // Ensure this path is correct

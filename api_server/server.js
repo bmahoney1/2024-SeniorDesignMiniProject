@@ -10,7 +10,7 @@ firebaseAdmin.initializeApp({
   credential: firebaseAdmin.credential.cert(serviceAccount)
 });
 
-const db = firebaseAdmin.firestore();  // For Firestore (or use firebaseAdmin.database() for Realtime DB)
+const db = firebaseAdmin.firestore();  // For Firestore 
 
 // Create an Express application
 const app = express();

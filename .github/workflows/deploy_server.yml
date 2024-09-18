@@ -23,7 +23,7 @@ jobs:
     # Step 3: Install dependencies
     - name: Install dependencies
       run: npm install
-      working-directory: ./api_server  # Change to your folder path if needed
+      working-directory: ./api_server  # Change to your folder path if need
 
     # Step 4: Inject tokens and run the server
     - name: Run Node.js server

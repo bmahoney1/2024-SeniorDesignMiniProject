@@ -31,5 +31,5 @@ jobs:
         echo "Injecting secrets..."
         export FireBase=${{ secrets.FIREBASE }}
         echo "Starting the server..."
-        node server.js  # Start your Node.js app
+        node server.js  # Start your Node.js app!
       working-directory: ./api_server

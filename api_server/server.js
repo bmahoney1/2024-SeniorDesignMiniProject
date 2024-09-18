@@ -74,13 +74,7 @@ app.post('/upload_score', (req, res) => {
   }
 
   const { Minimum, Maximum, Average, Score, timestamp } = data;
-  // Convert numbers to strings
-//   const scoreData = {
-//     Minimum: String(data.Minimum),
-//     Maximum: String(data.Maximum),
-//     Average: String(data.Average),
-//     Score: String(data.Score),
-//   };
+  
 
     const scoreData = {
         Minimum,
